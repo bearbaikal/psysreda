@@ -1,10 +1,8 @@
 <template>
   <div class="home-view">
     <div class="home-view__header">
-      <span class="home-view__title-line-primary"> Как перестать <s>думать только о других</s> </span>
-      <span class="home-view__exclamation-mark">?</span> <br />
       <span class="home-view__title-line-secondary">Как научиться заботиться о себе</span
-      ><span class="home-view__exclamation-mark">!</span>
+      ><span class="home-view__exclamation-mark">!?</span>
     </div>
     <div class="home-view__cards">
       <WelcomeCard />
@@ -44,7 +42,7 @@ import WelcomeCard from "@/components/cards/WelcomeCard.vue";
   }
 
   :deep(.base-card) {
-    margin-top: $px-50;
+    margin-top: $px-30;
   }
 }
 </style>

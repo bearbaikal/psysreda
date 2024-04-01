@@ -5,7 +5,7 @@
         <div>Татьяна Гвоздовская,</div>
         <div>гештальт - психотерапевт</div>
       </div>
-      <img src="@/images/logo.png" alt="Tatiana Gvozdovskaia" class="welcome-card__photo" />
+      <img src="@/images/logo3.jpg" alt="Tatiana Gvozdovskaia" class="welcome-card__photo" />
     </template>
     <template #body>
       <div class="welcome-card__body">
@@ -47,17 +47,18 @@ const onClickCloseMessageDialog = () => {
     margin-bottom: $px-20;
 
     div:first-child {
-      font-size: 1.15em;
+      font-size: 1.5em;
     }
 
     div:nth-child(2) {
-      font-size: 0.85em;
+      margin-top: $px-5;
+      font-size: 1em;
     }
   }
 
   &__photo {
-    height: 350px;
-    border-radius: 112px;
+    height: 450px;
+    border-radius: 15px;
   }
 
   &__body {
@@ -67,10 +68,9 @@ const onClickCloseMessageDialog = () => {
   }
 
   &__body-text {
-    margin-top: $px-10;
     margin-bottom: $px-20;
     text-align: center;
-    font-size: 1.07rem;
+    font-size: 1.25rem;
   }
 }
 </style>

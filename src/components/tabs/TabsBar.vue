@@ -27,10 +27,11 @@ const onClickTab = (tab: MenuOption) => {
 .tabs-bar {
   display: flex;
   justify-content: center;
-  gap: $px-15;
+  column-gap: $px-15;
+  row-gap: $px-10;
   font-size: 1.25rem;
   margin-top: $px-10;
-  margin-bottom: $px-40;
+  margin-bottom: $px-30;
   flex-wrap: wrap;
 
   &__tab {

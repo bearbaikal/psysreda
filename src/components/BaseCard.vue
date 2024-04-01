@@ -24,8 +24,8 @@ defineProps({
 .base-card {
   display: flex;
   justify-content: center;
-  padding-right: $px-10;
-  padding-left: $px-10;
+  padding-right: $px-20;
+  padding-left: $px-20;
 
   &__container {
     width: 480px;
