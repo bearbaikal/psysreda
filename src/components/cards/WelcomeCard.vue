@@ -10,6 +10,10 @@
     <template #body>
       <div class="welcome-card__body">
         <div class="welcome-card__body-text">
+          <div class="welcome-card__question">
+            <span class="welcome-card__question-text">Научиться заботиться о себе</span>
+            <span class="welcome-card__question-marks">!?</span>
+          </div>
           Если ты задаёшь себе этот вопрос,<br />
           то значит ты <b>готов к изменениям</b> <br />и мы сможем начать совместную работу
         </div>
@@ -56,6 +60,19 @@ const onClickCloseMessageDialog = () => {
     }
   }
 
+  &__question {
+    padding-bottom: $px-20;
+  }
+
+  &__question-text {
+    font-size: 1.5rem;
+  }
+
+  &__question-marks {
+    padding-left: $px-1;
+    font-size: 1.5rem;
+  }
+
   &__photo {
     height: 450px;
     border-radius: 15px;
@@ -70,7 +87,7 @@ const onClickCloseMessageDialog = () => {
   &__body-text {
     margin-bottom: $px-20;
     text-align: center;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
   }
 }
 </style>

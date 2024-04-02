@@ -1,18 +1,25 @@
 <template>
   <div class="tabs-bar">
-    <div v-for="tab in preparedTabs" :key="tab.path" @click="onClickTab(tab)" class="tabs-bar__tab">
+    <div
+      v-for="tab in preparedTabs"
+      :key="tab.route.name"
+      @click="onClickTab(tab)"
+      class="tabs-bar__tab"
+      :class="{ 'tabs-bar__tab--active': tab.route.name === route.name }"
+    >
       {{ tab.label }}
     </div>
   </div>
 </template>
 <script lang="ts" setup>
 import { computed } from "vue";
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
 import { topMenuTabs } from "@/settings/topMenuTabs";
 import type { MenuOption } from "@/types/menus";
 
 const router = useRouter();
+const route = useRoute();
 
 const preparedTabs = computed(() => {
   return topMenuTabs.filter((el) => !el.disabled);
@@ -29,8 +36,8 @@ const onClickTab = (tab: MenuOption) => {
   justify-content: center;
   column-gap: $px-15;
   row-gap: $px-10;
-  font-size: 1.25rem;
-  margin-top: $px-10;
+  font-size: 1.5rem;
+  margin-top: $px-25;
   margin-bottom: $px-30;
   flex-wrap: wrap;
 
@@ -39,6 +46,10 @@ const onClickTab = (tab: MenuOption) => {
   }
 
   &__tab:hover {
+    text-decoration: underline;
+  }
+
+  &__tab--active {
     text-decoration: underline;
   }
 }

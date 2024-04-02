@@ -1,20 +1,12 @@
 <template>
   <div class="home-view">
-    <div class="home-view__header">
-      <span class="home-view__title-line-secondary">Как научиться заботиться о себе</span
-      ><span class="home-view__exclamation-mark">!?</span>
-    </div>
     <div class="home-view__cards">
       <WelcomeCard />
-      <AuditoryCard />
-      <CodependencyTestCard />
     </div>
   </div>
 </template>
 <script lang="ts" setup>
 // TODO
-import AuditoryCard from "@/components/cards/AuditoryCard.vue";
-import CodependencyTestCard from "@/components/cards/CodependencyTestCard.vue";
 import WelcomeCard from "@/components/cards/WelcomeCard.vue";
 </script>
 <style lang="scss" scoped>
@@ -39,10 +31,6 @@ import WelcomeCard from "@/components/cards/WelcomeCard.vue";
 
   &__title-line-secondary {
     color: #333;
-  }
-
-  :deep(.base-card) {
-    margin-top: $px-30;
   }
 }
 </style>
