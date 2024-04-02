@@ -1,8 +1,8 @@
 <template>
   <div class="gestalt-view">
-    <AuditoryCard />
+    <CodependencyTestCard />
   </div>
 </template>
 <script setup lang="ts">
-import AuditoryCard from "@/components/cards/AuditoryCard.vue";
+import CodependencyTestCard from "@/components/cards/CodependencyTestCard.vue";
 </script>

@@ -1,8 +1,8 @@
 <template>
   <div class="consultations-view">
-    <CodependencyTestCard />
+    <AuditoryCard />
   </div>
 </template>
 <script setup lang="ts">
-import CodependencyTestCard from "@/components/cards/CodependencyTestCard.vue";
+import AuditoryCard from "@/components/cards/AuditoryCard.vue";
 </script>

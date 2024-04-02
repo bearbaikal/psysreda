@@ -2,7 +2,7 @@
   <BaseCard>
     <template #header>
       Нужна ли мне работа<br />
-      с со-зависимостью?
+      с созависимостью?
     </template>
     <template #body>
       <div class="codependency-test-card__body">
@@ -20,51 +20,48 @@
       </div>
     </template>
   </BaseCard>
-  <CodependencyTestDialog
-    ref="testDialogRef"
-    @click:close="handleCloseTestDialog"
-    @test:finish="handleFinishTest"
-  />
+  <CodependencyTestDialog ref="testDialogRef" @click:close="handleCloseTestDialog" @test:finish="handleFinishTest" />
 </template>
 <script lang="ts" setup>
-import { onBeforeMount, ref } from 'vue'
-import BaseCard from '@/components/BaseCard.vue'
-import { lang } from '@/settings/lang'
-import BaseButton from '@/components/base/buttons/BaseButton.vue'
-import CodependencyTestDialog from '@/components/dialogs/TestDialog.vue'
-import { LocalStorageKeys } from '@/settings/localStorage'
+import { onBeforeMount, ref } from "vue";
 
-const testDialogRef = ref<InstanceType<typeof CodependencyTestDialog> | undefined>()
-const testResult = ref<number | undefined>(undefined)
+import BaseButton from "@/components/base/buttons/BaseButton.vue";
+import BaseCard from "@/components/BaseCard.vue";
+import CodependencyTestDialog from "@/components/dialogs/TestDialog.vue";
+import { lang } from "@/settings/lang";
+import { LocalStorageKeys } from "@/settings/localStorage";
+
+const testDialogRef = ref<InstanceType<typeof CodependencyTestDialog> | undefined>();
+const testResult = ref<number | undefined>(undefined);
 
 onBeforeMount(() => {
   if (localStorage.getItem(LocalStorageKeys.CodependencyTest)) {
-    testResult.value = Number(localStorage.getItem(LocalStorageKeys.CodependencyTest))
+    testResult.value = Number(localStorage.getItem(LocalStorageKeys.CodependencyTest));
   }
-})
+});
 
 const openTestDialog = () => {
-  testDialogRef.value?.open()
-}
+  testDialogRef.value?.open();
+};
 
 const handleCloseTestDialog = () => {
-  testDialogRef.value?.close()
-}
+  testDialogRef.value?.close();
+};
 
 const handleFinishTest = async (result: number | null) => {
-  testResult.value = result || undefined
+  testResult.value = result || undefined;
 
-  testDialogRef.value?.close()
+  testDialogRef.value?.close();
 
   // TODO Implement send to telegram.
   //   let text = 'Кто-то заполнил тест на сайте!\n'
   //   text += 'Дата и время заполнения:\n' + format(new Date(), DATE_TIME_FORMAT) + '\n'
   //   text += 'Сумма теста:\n' + total.value
   //   await notifySiteOwner(text)
-}
+};
 </script>
 <style lang="scss" scoped>
-@import '@/scss/variables.scss';
+@import "@/scss/variables.scss";
 
 .codependency-test-card {
   &__body {

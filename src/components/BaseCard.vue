@@ -26,7 +26,6 @@ defineProps({
   justify-content: center;
   padding-right: $px-20;
   padding-left: $px-20;
-  margin-bottom: $px-30;
 
   &__container {
     width: 480px;
