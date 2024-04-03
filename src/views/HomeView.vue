@@ -21,7 +21,7 @@ import WelcomeCard from "@/components/cards/WelcomeCard.vue";
   }
 
   &__title-line-primary {
-    color: #333;
+    color: $black-accent-1;
     font-size: 1.25rem;
   }
 
@@ -30,7 +30,7 @@ import WelcomeCard from "@/components/cards/WelcomeCard.vue";
   }
 
   &__title-line-secondary {
-    color: #333;
+    color: $black-accent-1;
   }
 }
 </style>

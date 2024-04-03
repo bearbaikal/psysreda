@@ -8,26 +8,17 @@
             <span v-if="item.label" class="carousel-container__label">
               {{ item.label }}
             </span>
-            <span v-if="item.text" v-html="'<br/>' + item.text" class="carousel-container__text">
-            </span>
+            <span v-if="item.text" v-html="'<br/>' + item.text" class="carousel-container__text"> </span>
           </v-list-item>
           <div class="text-center">
-            <v-btn
-              v-if="document.image"
-              class="psysreda-pink-button"
-              @click="openDocument"
-              small
-              depressed
-            >
+            <v-btn v-if="document.image" class="psysreda-pink-button" @click="openDocument" small depressed>
               Документ
             </v-btn>
           </div>
         </v-list>
       </v-carousel-item>
     </v-carousel>
-    <div class="document-counter text-center b-5 d-none">
-      {{ currentIndex + 1 }} из {{ documents.length }}
-    </div>
+    <div class="document-counter text-center b-5 d-none">{{ currentIndex + 1 }} из {{ documents.length }}</div>
     <v-dialog v-model="documentDialog" max-width="600">
       <v-card min-height="500">
         <v-card-title class="pt-7 pb-5" v-html="currentTitle"></v-card-title>
@@ -35,48 +26,46 @@
           <img class="document-image" :src="getDiplomaUrl(documents[currentIndex].image)" alt="" />
         </v-card-text>
         <v-card-actions class="pb-8">
-          <v-btn @click="closeDocument" class="mx-auto psysreda-pink-button" depressed small
-            >Закрыть
-          </v-btn>
+          <v-btn @click="closeDocument" class="mx-auto psysreda-pink-button" depressed small>Закрыть </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
   </div>
 </template>
 <script>
-import DOCUMENTS from '@/data/documents'
+import DOCUMENTS from "@/data/documents";
 
 export default {
-  name: 'DocumentsCard',
+  name: "DocumentsCard",
   data() {
     return {
       documentDialog: false,
       currentIndex: 0,
-      currentTitle: '',
-      documents: DOCUMENTS
-    }
+      currentTitle: "",
+      documents: DOCUMENTS,
+    };
   },
   methods: {
     openDocument() {
-      this.documentDialog = true
+      this.documentDialog = true;
     },
     closeDocument() {
-      this.documentDialog = false
+      this.documentDialog = false;
     },
     change(index) {
-      this.currentIndex = index
+      this.currentIndex = index;
       if (this.documents[index].items[0]) {
-        this.currentTitle = this.documents[index].items[0].title
+        this.currentTitle = this.documents[index].items[0].title;
       }
     },
     getDiplomaUrl(file) {
-      return require('@/scss/images/diplomas/' + file)
-    }
-  }
-}
+      return require("@/scss/images/diplomas/" + file);
+    },
+  },
+};
 </script>
 <style lang="scss" scoped>
-@import '@/scss/variables.scss';
+@import "@/scss/variables.scss";
 
 .document-counter {
   font-size: 20px;
@@ -97,7 +86,7 @@ export default {
   }
 
   &__label {
-    color: #dc3545;
+    color: $primary-color;
     padding-right: 3px;
   }
 

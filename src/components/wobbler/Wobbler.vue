@@ -17,7 +17,7 @@
   display: grid;
   grid-template-rows: 1fr 1fr;
   width: $standard-width;
-  border: $border-style;
+  border: 2px dashed #dc7e89;
   border-radius: $border-radius;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .bottom {
-  border-top: $border-style;
+  border-top: 2px dashed #ccc;
   border-bottom-right-radius: $border-radius;
   border-bottom-left-radius: $border-radius;
 }

@@ -158,6 +158,8 @@
 // };
 </script>
 <style lang="scss" scoped>
+@import "@/scss/variables.scss";
+
 .simple-card {
   max-width: 500px;
   margin: 0 auto;
@@ -171,13 +173,13 @@
 
 .question {
   font-size: 17px;
-  color: #333;
+  color: $black-accent-1;
   padding-bottom: 10px;
 }
 
 h2 {
   font-size: 22px;
-  color: #333;
+  color: $black-accent-1;
 }
 
 li {

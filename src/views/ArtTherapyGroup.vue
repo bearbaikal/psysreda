@@ -273,6 +273,8 @@
 </script>
 
 <style lang="scss" scoped>
+@import "@/scss/variables.scss";
+
 .simple-card {
   max-width: 700px;
   margin: 0 auto;
@@ -284,7 +286,7 @@
 
 h2 {
   font-size: 22px;
-  color: #333;
+  color: $black-accent-1;
 }
 
 li {

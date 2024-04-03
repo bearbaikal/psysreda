@@ -19,6 +19,9 @@
 
 .section1 {
   font-size: 1.675rem;
+  line-height: 1.5em;
+  color: $black-accent-1;
+  margin-bottom: $px-30;
 }
 
 .section2 {

@@ -17,6 +17,10 @@ export const lang = {
     passAgain: "Пройти Заново",
   },
 
+  textLink: {
+    knowMore: "Узнать подробнее...",
+  },
+
   title: {
     messageMe: "Написать мне",
     codependencyTest: "Тест на созависимость",
