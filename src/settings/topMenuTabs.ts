@@ -15,7 +15,7 @@ export const topMenuTabs: MenuOption[] = [
     route: appRoutes.consultations,
   },
   {
-    label: "Моё образование",
+    label: "Образование",
     route: appRoutes.education,
   },
 ];

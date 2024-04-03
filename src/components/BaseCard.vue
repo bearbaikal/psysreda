@@ -1,6 +1,9 @@
 <template>
   <div class="base-card" :style="{ maxWidth, minHeight }">
-    <div class="base-card__container">
+    <div
+      class="base-card__container"
+      :class="{ 'base-card__container--flat-top': flatTop, 'base-card__container--flat-bottom': flatBottom }"
+    >
       <div class="base-card__header" v-if="$slots.header">
         <slot name="header" />
       </div>
@@ -15,6 +18,8 @@
 defineProps({
   maxWidth: String,
   minHeight: String,
+  flatTop: Boolean,
+  flatBottom: Boolean,
 });
 </script>
 
@@ -28,10 +33,19 @@ defineProps({
   padding-left: $px-20;
 
   &__container {
-    width: 480px;
+    width: $standard-width;
+    border: $border-style;
+    border-radius: $border-radius;
+  }
 
-    border: 2px dashed #bbb;
-    border-radius: $border-radius !important;
+  &__container--flat-top {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+
+  &__container--flat-bottom {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
   }
 
   &__header {

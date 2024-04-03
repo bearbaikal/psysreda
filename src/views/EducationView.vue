@@ -1,23 +1,31 @@
 <template>
   <div class="education-view">
-    <div class="education-view__title">
-      {{ lang.title.education }}
-    </div>
-    <BaseCard v-for="item in educationHistory" :key="item.title + item.type + item.location">
-      <template #body>
-        <div class="education-view__item-title">{{ item.title }}</div>
-        <div class="education-view__item-period">{{ item.period }}</div>
-        <div class="education-view__item-type">{{ item.type }}</div>
-        <div class="education-view__item-city">{{ item.city }},</div>
-        <div class="education-view__item-location">{{ item.location }}</div>
+    <Wobbler>
+      <template #bottom>
+        <Layout1>
+          <template #section1> Программы профессиональной переподготовки и повышения квалификации </template>
+          <template #section2> c 2005 года </template>
+          <template #section3>пройдено более 20 программ </template>
+          <template #section4>Узнать подробнее...</template>
+        </Layout1>
       </template>
-    </BaseCard>
+      <template #top>
+        <Layout1>
+          <template #section1> Диплом <br />о высшем образовании </template>
+          <template #section2> 2000 - 2005 </template>
+          <template #section3>
+            Психолог,<br />
+            Преподаватель психологии.</template
+          >
+          <template #section4> Экономико-Правовой институт, г.Воронеж </template>
+        </Layout1>
+      </template>
+    </Wobbler>
   </div>
 </template>
 <script lang="ts" setup>
-import BaseCard from "@/components/BaseCard.vue";
-import { educationHistory } from "@/settings/education/educationHistory";
-import { lang } from "@/settings/lang";
+import Layout1 from "@/components/Layout1.vue";
+import Wobbler from "@/components/wobbler/Wobbler.vue";
 </script>
 <style lang="scss" scoped>
 @import "@/scss/variables.scss";

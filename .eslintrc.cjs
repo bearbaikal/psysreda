@@ -74,6 +74,7 @@ module.exports = {
     "vue/no-deprecated-slot-attribute": "off",
 
     "@typescript-eslint/no-non-null-assertion": "off",
+    'vue/multi-word-component-names': 0
   },
   settings: {
     "import/resolver": {
