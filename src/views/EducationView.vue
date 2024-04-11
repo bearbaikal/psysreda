@@ -1,7 +1,22 @@
 <template>
   <div class="education-view">
-    <Wobbler>
-      <template #top>
+    <BaseCard class="welcome-card">
+      <template #body>
+        <Layout1>
+          <template #section1> Программы профессиональной подготовки</template>
+          <template #section2> с 2005 года - сегодня </template>
+          <template #section3>
+            <div style="margin-top: 40px; margin-bottom: 40px">Я прошла более 20 образовательных программ</div>
+          </template>
+          <template #section4>
+            <TextLink :text="lang.textLink.knowMore" @click="knowMoreAboutCourses" />
+          </template>
+        </Layout1>
+      </template>
+    </BaseCard>
+
+    <BaseCard class="welcome-card">
+      <template #body>
         <Layout1>
           <template #section1> Диплом <br />о высшем образовании </template>
           <template #section2> 2000 - 2005 </template>
@@ -19,25 +34,13 @@
           </template>
         </Layout1>
       </template>
-      <template #bottom>
-        <Layout1>
-          <template #section1> Программы профессиональной подготовки</template>
-          <template #section2> с 2005 года - сегодня </template>
-          <template #section3>
-            <div style="margin-top: 40px; margin-bottom: 40px">пройдено более 20 программ</div>
-          </template>
-          <template #section4>
-            <TextLink :text="lang.textLink.knowMore" @click="knowMoreAboutCourses" />
-          </template>
-        </Layout1>
-      </template>
-    </Wobbler>
+    </BaseCard>
   </div>
 </template>
 <script lang="ts" setup>
+import BaseCard from "@/components/BaseCard.vue";
 import Layout1 from "@/components/Layout1.vue";
 import TextLink from "@/components/links/TextLink.vue";
-import Wobbler from "@/components/wobbler/Wobbler.vue";
 import { lang } from "@/settings/lang";
 
 const knowMoreAboutDiploma = () => {

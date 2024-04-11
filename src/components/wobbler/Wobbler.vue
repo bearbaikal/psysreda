@@ -17,7 +17,7 @@
   display: grid;
   grid-template-rows: 1fr 1fr;
   width: $standard-width;
-  border: 2px dashed #dc7e89;
+  border: 2px dashed #bbb;
   border-radius: $border-radius;
 }
 

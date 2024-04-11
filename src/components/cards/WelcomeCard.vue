@@ -12,10 +12,12 @@
         <div class="welcome-card__body-text">
           <div class="welcome-card__question">
             <span class="welcome-card__question-text">Научиться заботиться о себе</span>
-            <span class="welcome-card__question-marks">!?</span>
+            <span class="welcome-card__question-marks">!</span>
           </div>
-          Если ты задаёшь себе этот вопрос,<br />
-          то значит ты <b>готов к изменениям</b> <br />и мы сможем начать совместную работу
+          <div class="welcome-card__answer">
+            Если тебе отзывается эта фраза,<br />
+            то значит ты <b>готов к изменениям</b> <br />и мы сможем начать совместную работу
+          </div>
         </div>
         <BaseButton :text="lang.button.writeMe" color-scheme="red" @click="openMessageDialog" />
       </div>
@@ -62,6 +64,10 @@ const onClickCloseMessageDialog = () => {
 
   &__question {
     padding-bottom: $px-20;
+  }
+
+  &__answer {
+    line-height: 1.25em;
   }
 
   &__question-text {
