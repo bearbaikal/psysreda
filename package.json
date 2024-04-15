@@ -1,6 +1,6 @@
 {
-  "name": "psysreda-vue3",
-  "version": "0.0.0",
+  "name": "psysreda-vue",
+  "version": "2024.3",
   "private": true,
   "type": "module",
   "scripts": {
