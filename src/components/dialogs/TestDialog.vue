@@ -1,8 +1,5 @@
 <template>
-  <BaseDialog
-    ref="baseDialogRef"
-    @click:close="emit('click:close', result || resultFromLocalStorage)"
-  >
+  <BaseDialog ref="baseDialogRef" @click:close="emit('click:close', result || resultFromLocalStorage)">
     <template #header> {{ lang.title.codependencyTest }}</template>
     <template #body>
       <div class="test-dialog__body">
@@ -39,106 +36,100 @@
   </BaseDialog>
 </template>
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
-import { lang } from '@/settings/lang'
-import BaseDialog from '@/components/base/dialogs/BaseDialog.vue'
-import BaseButton from '@/components/base/buttons/BaseButton.vue'
-import TextParser from '@/components/TextParser.vue'
-import { codependencyTestQuestions } from '@/settings/tests/codependencyTest/codependencyTestQuestions'
-import QuestionComponent from '@/components/test/TestQuestionComponent.vue'
-import ResultComponent from '@/components/test/TestResultComponent.vue'
-import { LocalStorageKeys } from '@/settings/localStorage'
+import { computed, ref } from "vue";
 
-const emit = defineEmits(['click:close', 'test:finish'])
+import BaseButton from "@/components/base/buttons/BaseButton.vue";
+import BaseDialog from "@/components/base/dialogs/BaseDialog.vue";
+import QuestionComponent from "@/components/test/TestQuestionComponent.vue";
+import ResultComponent from "@/components/test/TestResultComponent.vue";
+import TextParser from "@/components/TextParser.vue";
+import { lang } from "@/settings/lang";
+import { LocalStorageKeys } from "@/settings/localStorage";
+import { codependencyTestQuestions } from "@/settings/tests/codependencyTest/codependencyTestQuestions";
 
-let resultFromLocalStorage = ref<number | undefined>()
+const emit = defineEmits(["click:close", "test:finish"]);
 
-const baseDialogRef = ref<InstanceType<typeof BaseDialog> | undefined>()
-const questionNumber = ref<number>(0)
-const answers = ref<Record<number, number>>({})
-const isShowResult = ref<boolean>(false)
+const resultFromLocalStorage = ref<number | undefined>();
+
+const baseDialogRef = ref<InstanceType<typeof BaseDialog> | undefined>();
+const questionNumber = ref<number>(0);
+const answers = ref<Record<number, number>>({});
+const isShowResult = ref<boolean>(false);
 
 const isLastQuestion = computed<boolean>(() => {
-  return questionNumber.value === codependencyTestQuestions.length
-})
+  return questionNumber.value === codependencyTestQuestions.length;
+});
 
 const actionButtonText = computed<string>(() => {
   if (resultFromLocalStorage.value) {
-    return lang.button.passAgain
+    return lang.button.passAgain;
   }
 
   if (!questionNumber.value) {
-    return lang.button.startTest
+    return lang.button.startTest;
   }
 
   if (isShowResult.value) {
-    return lang.button.finish
+    return lang.button.finish;
   }
 
   if (isLastQuestion.value) {
-    return lang.button.showResult
+    return lang.button.showResult;
   }
 
-  return `${lang.button.continue}`
-})
+  return `${lang.button.continue}`;
+});
 
 const result = computed<number>(() => {
-  return Object.values(answers.value).reduce(
-    (previousValue, currentValue) => previousValue + currentValue,
-    0
-  )
-})
+  return Object.values(answers.value).reduce((previousValue, currentValue) => previousValue + currentValue, 0);
+});
 
 const isActionButtonDisabled = computed<boolean>(() => {
-  return (
-    !!questionNumber.value &&
-    !isShowResult.value &&
-    typeof answers.value[questionNumber.value] === 'undefined'
-  )
-})
+  return !!questionNumber.value && !isShowResult.value && typeof answers.value[questionNumber.value] === "undefined";
+});
 
 const handleClickActionButton = () => {
   if (resultFromLocalStorage.value) {
-    resultFromLocalStorage.value = undefined
-    localStorage.removeItem(LocalStorageKeys.CodependencyTest)
+    resultFromLocalStorage.value = undefined;
+    localStorage.removeItem(LocalStorageKeys.CodependencyTest);
   }
 
   if (isShowResult.value) {
-    emit('test:finish', result.value)
+    emit("test:finish", result.value);
 
-    return
+    return;
   }
 
   if (isLastQuestion.value) {
-    localStorage.setItem(LocalStorageKeys.CodependencyTest, result.value.toString())
+    localStorage.setItem(LocalStorageKeys.CodependencyTest, result.value.toString());
 
-    isShowResult.value = true
+    isShowResult.value = true;
 
-    return
+    return;
   }
 
-  console.log('NEXT question')
+  console.log("NEXT question");
 
-  questionNumber.value++
-}
+  questionNumber.value++;
+};
 
 defineExpose({
   open: () => {
-    questionNumber.value = 0
-    answers.value = {}
-    isShowResult.value = false
-    baseDialogRef.value?.open()
+    questionNumber.value = 0;
+    answers.value = {};
+    isShowResult.value = false;
+    baseDialogRef.value?.open();
     if (localStorage.getItem(LocalStorageKeys.CodependencyTest)) {
-      resultFromLocalStorage.value = Number(localStorage.getItem(LocalStorageKeys.CodependencyTest))
+      resultFromLocalStorage.value = Number(localStorage.getItem(LocalStorageKeys.CodependencyTest));
     }
   },
   close: () => {
-    baseDialogRef.value?.close()
-  }
-})
+    baseDialogRef.value?.close();
+  },
+});
 </script>
 <style lang="scss" scoped>
-@import '@/scss/variables.scss';
+@import "@/scss/variables.scss";
 
 .test-dialog {
   &__body {

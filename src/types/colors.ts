@@ -1,5 +1,5 @@
 export interface ColorScheme {
-  color: string
-  border?: string
-  backgroundColor: string
+  color: string;
+  border?: string;
+  backgroundColor: string;
 }

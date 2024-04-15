@@ -17,29 +17,29 @@
   </Teleport>
 </template>
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref } from "vue";
 
-const emit = defineEmits(['click:close'])
+const emit = defineEmits(["click:close"]);
 
 defineProps({
-  closeIcon: Boolean
-})
+  closeIcon: Boolean,
+});
 
-const showDialog = ref<boolean>(false)
+const showDialog = ref<boolean>(false);
 
 defineExpose({
   open: () => {
-    document.body.style.overflow = 'hidden'
-    showDialog.value = true
+    document.body.style.overflow = "hidden";
+    showDialog.value = true;
   },
   close: () => {
-    document.body.style.overflow = 'auto'
-    showDialog.value = false
-  }
-})
+    document.body.style.overflow = "auto";
+    showDialog.value = false;
+  },
+});
 </script>
 <style lang="scss" scoped>
-@import '@/scss/variables.scss';
+@import "@/scss/variables.scss";
 
 .base-dialog {
   position: fixed;

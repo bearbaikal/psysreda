@@ -5,16 +5,8 @@
     </template>
     <template #body>
       <div class="message_dialog__body">
-        <InputText
-          v-model="form.name"
-          :placeholder="lang.placeholder.yoursName"
-          :invalid="!validation.name()"
-        />
-        <InputText
-          v-model="form.phone"
-          :placeholder="lang.placeholder.yoursPhone"
-          :invalid="!validation.phone()"
-        />
+        <InputText v-model="form.name" :placeholder="lang.placeholder.yoursName" :invalid="!validation.name()" />
+        <InputText v-model="form.phone" :placeholder="lang.placeholder.yoursPhone" :invalid="!validation.phone()" />
         <Textarea
           v-model="form.message"
           rows="5"
@@ -32,54 +24,51 @@
           color-scheme="red"
           @click="handleClickWriteMe"
         />
-        <BaseButton
-          :text="lang.button.close"
-          color-scheme="whiteAndBlack"
-          @click="emit('click:close')"
-        />
+        <BaseButton :text="lang.button.close" color-scheme="whiteAndBlack" @click="emit('click:close')" />
       </div>
     </template>
   </BaseDialog>
 </template>
 <script lang="ts" setup>
-import { computed, reactive, ref } from 'vue'
-import { lang } from '@/settings/lang'
-import BaseDialog from '@/components/base/dialogs/BaseDialog.vue'
-import InputText from 'primevue/inputtext'
-import Textarea from 'primevue/textarea'
-import BaseButton from '@/components/base/buttons/BaseButton.vue'
+import InputText from "primevue/inputtext";
+import Textarea from "primevue/textarea";
+import { computed, reactive, ref } from "vue";
 
-const MIN_NAME_LENGTH = 2
-const MIN_PHONE_LENGTH = 9 // For local Spain number.
-const MIN_MESSAGE_LENGTH = 10
+import BaseButton from "@/components/base/buttons/BaseButton.vue";
+import BaseDialog from "@/components/base/dialogs/BaseDialog.vue";
+import { lang } from "@/settings/lang";
 
-const emit = defineEmits(['click:close'])
+const MIN_NAME_LENGTH = 2;
+const MIN_PHONE_LENGTH = 9; // For local Spain number.
+const MIN_MESSAGE_LENGTH = 10;
 
-const baseDialogRef = ref<InstanceType<typeof BaseDialog> | undefined>()
+const emit = defineEmits(["click:close"]);
+
+const baseDialogRef = ref<InstanceType<typeof BaseDialog> | undefined>();
 
 const form = reactive({
-  name: '',
-  phone: '',
-  message: ''
-})
+  name: "",
+  phone: "",
+  message: "",
+});
 
 const validation = reactive({
   name: (): boolean => {
-    return form.name.trim().length >= MIN_NAME_LENGTH
+    return form.name.trim().length >= MIN_NAME_LENGTH;
   },
   phone: (): boolean => {
-    return form.phone.replace(/\s/g, '').length >= MIN_PHONE_LENGTH
+    return form.phone.replace(/\s/g, "").length >= MIN_PHONE_LENGTH;
   },
   message: (): boolean => {
-    return form.message.trim().length >= MIN_MESSAGE_LENGTH
-  }
-})
+    return form.message.trim().length >= MIN_MESSAGE_LENGTH;
+  },
+});
 
 const isFormValid = computed<boolean>(() => {
-  return validation.phone() && validation.name() && validation.message()
-})
+  return validation.phone() && validation.name() && validation.message();
+});
 const handleClickWriteMe = () => {
-  console.log('on click')
+  console.log("on click");
   // this.$refs.form.validate()
   // if (!this.valid) {
   //   return
@@ -92,19 +81,19 @@ const handleClickWriteMe = () => {
   // text += '\nСпособ связи:\n' + this.formData.connector
   // await notifySiteOwner(text)
   // this.status = 'data_sent'
-}
+};
 
 defineExpose({
   open: () => {
-    baseDialogRef.value?.open()
+    baseDialogRef.value?.open();
   },
   close: () => {
-    baseDialogRef.value?.close()
-  }
-})
+    baseDialogRef.value?.close();
+  },
+});
 </script>
 <style lang="scss" scoped>
-@import '@/scss/variables.scss';
+@import "@/scss/variables.scss";
 
 .message_dialog {
   &__body {

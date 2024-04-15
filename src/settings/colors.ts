@@ -1,21 +1,21 @@
-import type { ColorScheme } from '@/types/colors'
+import type { ColorScheme } from "@/types/colors";
 
 export const buttonColorSchemes: Record<string, ColorScheme> = {
   grey: {
-    color: 'black',
-    backgroundColor: '#666'
+    color: "black",
+    backgroundColor: "#666",
   },
   lightGrey: {
-    color: 'black',
-    backgroundColor: '#ccc'
+    color: "black",
+    backgroundColor: "#ccc",
   },
   red: {
-    color: 'white',
-    backgroundColor: '#dc3545'
+    color: "white",
+    backgroundColor: "#dc3545",
   },
   whiteAndBlack: {
-    color: 'black',
-    border: '1px solid #666',
-    backgroundColor: '#FFF'
-  }
-}
+    color: "black",
+    border: "1px solid #666",
+    backgroundColor: "#FFF",
+  },
+};

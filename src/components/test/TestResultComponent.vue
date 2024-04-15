@@ -13,15 +13,15 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { lang } from '@/settings/lang'
-import TextParser from '@/components/TextParser.vue'
+import TextParser from "@/components/TextParser.vue";
+import { lang } from "@/settings/lang";
 
 defineProps({
-  result: { type: Number, required: true }
-})
+  result: { type: Number, required: true },
+});
 </script>
 <style lang="scss" scoped>
-@import '@/scss/variables';
+@import "@/scss/variables";
 .result-component {
   &__title {
     font-size: 1.5rem;

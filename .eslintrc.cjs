@@ -16,7 +16,7 @@ module.exports = {
     ecmaVersion: 2020,
   },
   rules: {
-    "semi": ["error", "always"],
+    semi: ["error", "always"],
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
     "prettier/prettier": [
@@ -57,14 +57,7 @@ module.exports = {
       "error",
       {
         "newlines-between": "always",
-        groups: [
-          "builtin",
-          "external",
-          "internal",
-          ["sibling", "parent"],
-          "index",
-          "unknown",
-        ],
+        groups: ["builtin", "external", "internal", ["sibling", "parent"], "index", "unknown"],
         alphabetize: {
           order: "asc",
           caseInsensitive: true,
@@ -74,7 +67,7 @@ module.exports = {
     "vue/no-deprecated-slot-attribute": "off",
 
     "@typescript-eslint/no-non-null-assertion": "off",
-    'vue/multi-word-component-names': 0
+    "vue/multi-word-component-names": 0,
   },
   settings: {
     "import/resolver": {
@@ -83,9 +76,9 @@ module.exports = {
       },
       node: {
         extensions: [".js", ".jsx", ".ts", ".tsx"],
-        moduleDirectory: ['node_modules', 'src/'],
+        moduleDirectory: ["node_modules", "src/"],
         paths: ["src"],
-      }
+      },
     },
   },
   overrides: [

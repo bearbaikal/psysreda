@@ -5,31 +5,27 @@
       {{ question }}
     </div>
     <div class="question-component__answers">
-      <div v-for="(answer, index) in lang.test.answers" class="question-component__item">
-        <RadioButton
-          v-model="answerNumber"
-          :inputId="`answer${index + 1}`"
-          name="answer"
-          :value="index + 1"
-        />
+      <div v-for="(answer, index) in lang.test.answers" class="question-component__item" :key="index">
+        <RadioButton v-model="answerNumber" :inputId="`answer${index + 1}`" name="answer" :value="index + 1" />
         <label :for="`answer${index + 1}`">{{ answer }}</label>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
-import { lang } from '@/settings/lang'
-import RadioButton from 'primevue/radiobutton'
+import RadioButton from "primevue/radiobutton";
 
-const answerNumber = defineModel()
+import { lang } from "@/settings/lang";
+
+const answerNumber = defineModel();
 
 defineProps({
   question: { type: String, required: true },
-  info: { type: String }
-})
+  info: { type: String },
+});
 </script>
 <style lang="scss" scoped>
-@import '@/scss/variables';
+@import "@/scss/variables";
 .question-component {
   &__question {
     margin-top: $px-20;
