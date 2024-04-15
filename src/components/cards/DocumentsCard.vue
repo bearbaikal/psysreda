@@ -1,68 +1,32 @@
 <template>
   <div>
-    <v-carousel
-      class="carousel-container"
-      hide-delimiters
-      show-arrows
-      @change="change"
-    >
-      <v-carousel-item
-        v-for="(document, documentKey) in documents"
-        :key="documentKey"
-      >
+    <v-carousel class="carousel-container" hide-delimiters show-arrows @change="change">
+      <v-carousel-item v-for="(document, documentKey) in documents" :key="documentKey">
         <v-list class="carousel-container__custom-list">
           <v-list-item v-for="(item, itemKey) in document.items" :key="itemKey">
-            <span
-              v-if="item.title"
-              v-html="item.title"
-              class="carousel-container__title"
-            >
-            </span>
+            <span v-if="item.title" v-html="item.title" class="carousel-container__title"> </span>
             <span v-if="item.label" class="carousel-container__label">
               {{ item.label }}
             </span>
-            <span
-              v-if="item.text"
-              v-html="'<br/>' + item.text"
-              class="carousel-container__text"
-            >
-            </span>
+            <span v-if="item.text" v-html="'<br/>' + item.text" class="carousel-container__text"> </span>
           </v-list-item>
           <div class="text-center">
-            <v-btn
-              v-if="document.image"
-              class="psysreda-pink-button"
-              @click="openDocument"
-              small
-              depressed
-            >
+            <v-btn v-if="document.image" class="psysreda-pink-button" @click="openDocument" small depressed>
               Документ
             </v-btn>
           </div>
         </v-list>
       </v-carousel-item>
     </v-carousel>
-    <div class="document-counter text-center b-5 d-none">
-      {{ currentIndex + 1 }} из {{ documents.length }}
-    </div>
+    <div class="document-counter text-center b-5 d-none">{{ currentIndex + 1 }} из {{ documents.length }}</div>
     <v-dialog v-model="documentDialog" max-width="600">
       <v-card min-height="500">
         <v-card-title class="pt-7 pb-5" v-html="currentTitle"></v-card-title>
         <v-card-text class="text-center pb-5">
-          <img
-            class="document-image"
-            :src="getDiplomaUrl(documents[currentIndex].image)"
-            alt=""
-          />
+          <img class="document-image" :src="getDiplomaUrl(documents[currentIndex].image)" alt="" />
         </v-card-text>
         <v-card-actions class="pb-8">
-          <v-btn
-            @click="closeDocument"
-            class="mx-auto psysreda-pink-button"
-            depressed
-            small
-            >Закрыть
-          </v-btn>
+          <v-btn @click="closeDocument" class="mx-auto psysreda-pink-button" depressed small>Закрыть </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -95,13 +59,13 @@ export default {
       }
     },
     getDiplomaUrl(file) {
-      return require("@/assets/images/diplomas/" + file);
+      return require("@/scss/images/diplomas/" + file);
     },
   },
 };
 </script>
 <style lang="scss" scoped>
-@import "@/assets/scss/variables.scss";
+@import "@/scss/variables.scss";
 
 .document-counter {
   font-size: 20px;
@@ -122,7 +86,7 @@ export default {
   }
 
   &__label {
-    color: #dc3545;
+    color: $primary-color;
     padding-right: 3px;
   }
 
@@ -151,23 +115,23 @@ export default {
   }
 }
 
-::v-deep {
-  .v-window__prev,
-  .v-window__next {
-    top: 180px;
-  }
-
-  .document-image {
-    max-width: 90%;
-  }
-
-  .v-dialog {
-    border-radius: 25px !important;
-  }
-
-  .carousel-container,
-  .v-carousel__item {
-    height: auto !important;
-  }
-}
+//::v-deep {
+//  .v-window__prev,
+//  .v-window__next {
+//    top: 180px;
+//  }
+//
+//  .document-image {
+//    max-width: 90%;
+//  }
+//
+//  .v-dialog {
+//    border-radius: 25px !important;
+//  }
+//
+//  .carousel-container,
+//  .v-carousel__item {
+//    height: auto !important;
+//  }
+//}
 </style>
