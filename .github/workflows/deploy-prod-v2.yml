@@ -7,7 +7,7 @@ on:
 
 jobs:
   web-deploy:
-    name: Deploy on Every Push
+    name: Deploy vue app to production
     runs-on: ubuntu-latest
     steps:
       - name: Get Latest Code
