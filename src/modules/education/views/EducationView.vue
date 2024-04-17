@@ -51,8 +51,8 @@
   </BaseDialog>
 </template>
 <script lang="ts" setup>
-import { Ref, ref } from "vue";
-import type { Component } from "vue";
+import { ref } from "vue";
+import type { Component, Ref } from "vue";
 
 import BaseButton from "@/components/base/buttons/BaseButton.vue";
 import BaseDialog from "@/components/base/dialogs/BaseDialog.vue";
