@@ -9,7 +9,7 @@
             <div style="margin-top: 40px; margin-bottom: 40px">Я прошла более 20 образовательных программ</div>
           </template>
           <template #section4>
-            <TextLink :text="lang.textLink.knowMore" @click="knowMoreAboutCourses" />
+            <TextLink :text="lang.textLink.knowMore" @click="handleClickKnowMore('educationPrograms')" />
           </template>
         </Layout1>
       </template>
@@ -30,29 +30,74 @@
             </div>
           </template>
           <template #section4>
-            <TextLink :text="lang.textLink.knowMore" @click="knowMoreAboutDiploma" />
+            <TextLink :text="lang.textLink.knowMore" @click="handleClickKnowMore('diploma')" />
           </template>
         </Layout1>
       </template>
     </BaseCard>
   </div>
+  <BaseDialog ref="baseDialogRef" @click:close="handleClickCloseDialog">
+    <template #header>
+      {{ dialog?.title }}
+    </template>
+    <template #body>
+      <div class="education-view__dialog-body">
+        <component :is="dialog?.component" />
+      </div>
+    </template>
+    <template #buttons>
+      <BaseButton :text="lang.button.close" color-scheme="whiteAndBlack" @click="handleClickCloseDialog" />
+    </template>
+  </BaseDialog>
 </template>
 <script lang="ts" setup>
+import { Ref, ref } from "vue";
+import type { Component } from "vue";
+
+import BaseButton from "@/components/base/buttons/BaseButton.vue";
+import BaseDialog from "@/components/base/dialogs/BaseDialog.vue";
 import BaseCard from "@/components/BaseCard.vue";
 import Layout1 from "@/components/Layout1.vue";
 import TextLink from "@/components/links/TextLink.vue";
+import Diploma from "@/modules/education/components/contentBlocks/Diploma.vue";
+import EducationPrograms from "@/modules/education/components/contentBlocks/EducationPrograms.vue";
 import { lang } from "@/settings/lang";
 
-const knowMoreAboutDiploma = () => {
-  console.log("knowMoreAboutDiploma");
+interface EducationDialog {
+  title: string;
+  component: Component; // Vue component.
+}
+
+type DialogName = "educationPrograms" | "diploma";
+
+const dialogs: Record<DialogName, EducationDialog> = {
+  educationPrograms: {
+    title: "Образовательные программы",
+    component: EducationPrograms,
+  },
+  diploma: {
+    title: "Диплом",
+    component: Diploma,
+  },
 };
 
-const knowMoreAboutCourses = () => {
-  console.log("knowMoreAboutCourses");
+const baseDialogRef = ref<InstanceType<typeof BaseDialog>>();
+const dialog: Ref<EducationDialog | null> = ref(null);
+
+const handleClickKnowMore = (dialogName: DialogName) => {
+  if (baseDialogRef.value) {
+    dialog.value = dialogs[dialogName];
+    baseDialogRef.value.open();
+  }
+};
+
+const handleClickCloseDialog = () => {
+  baseDialogRef.value?.close();
+  dialog.value = null;
 };
 </script>
 <style lang="scss" scoped>
-@import "@/scss/variables.scss";
+@import "@/scss/variables";
 
 .education-view {
   padding-left: $px-20;
@@ -86,6 +131,12 @@ const knowMoreAboutCourses = () => {
 
   &__item-location {
     font-size: 1rem;
+  }
+
+  &__dialog-body {
+    max-height: 60vh; // TODO Change 100px to header height.
+    overflow-y: auto;
+    padding: $px-20 0;
   }
 }
 

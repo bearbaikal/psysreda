@@ -13,12 +13,12 @@ defineProps({
 
 .text-link {
   color: $primary-color;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   cursor: pointer;
-  text-decoration: underline;
 }
 
 .text-link:hover {
   text-decoration: none;
+  opacity: 0.8;
 }
 </style>

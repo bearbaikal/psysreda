@@ -1,4 +1,4 @@
-export const educationHistory = [
+export const educationPrograms = [
   {
     type: "Терапевтическая программа Бертрама Мюллера",
     title:

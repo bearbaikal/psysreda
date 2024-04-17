@@ -18,13 +18,14 @@ export const lang = {
   },
 
   textLink: {
-    knowMore: "Узнать подробнее...",
+    knowMore: "Узнать подробнее",
   },
 
   title: {
     messageMe: "Написать мне",
     codependencyTest: "Тест на созависимость",
     education: "Образование",
+    educationalPrograms: "Образовательные программы",
   },
 
   placeholder: {

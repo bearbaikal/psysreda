@@ -1,5 +1,5 @@
+import EducationView from "@/modules/education/views/EducationView.vue";
 import ConsultationsView from "@/views/ConsultationsView.vue";
-import EducationView from "@/views/EducationView.vue";
 import GestaltView from "@/views/GestaltView.vue";
 import HomeView from "@/views/HomeView.vue";
 

@@ -44,7 +44,7 @@ const MIN_MESSAGE_LENGTH = 10;
 
 const emit = defineEmits(["click:close"]);
 
-const baseDialogRef = ref<InstanceType<typeof BaseDialog> | undefined>();
+const baseDialogRef = ref<InstanceType<typeof BaseDialog>>();
 
 const form = reactive({
   name: "",
