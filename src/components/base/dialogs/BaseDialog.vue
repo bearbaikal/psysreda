@@ -57,7 +57,7 @@ defineExpose({
     width: 400px;
     min-height: 400px;
     text-align: center;
-    padding: 20px 40px;
+    padding: 30px 40px 30px;
     border: 1px solid #999;
     background-color: #fff;
     opacity: 1;

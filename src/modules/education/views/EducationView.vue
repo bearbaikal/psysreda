@@ -76,7 +76,7 @@ const dialogs: Record<DialogName, EducationDialog> = {
     component: EducationPrograms,
   },
   diploma: {
-    title: "Диплом",
+    title: "Диплом о высшем образовании",
     component: Diploma,
   },
 };
@@ -136,7 +136,7 @@ const handleClickCloseDialog = () => {
   &__dialog-body {
     max-height: 60vh; // TODO Change 100px to header height.
     overflow-y: auto;
-    padding: $px-20 0;
+    padding-bottom: 30px;
   }
 }
 
