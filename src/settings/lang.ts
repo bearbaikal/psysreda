@@ -23,7 +23,7 @@ export const lang = {
 
   title: {
     messageMe: "Написать мне",
-    codependencyTest: "Тест на созависимость",
+    codependencyQuiz: "Тест на созависимость",
     education: "Образование",
     educationalPrograms: "Образовательные программы",
   },
@@ -34,7 +34,7 @@ export const lang = {
     messageToMe: "Сообщение мне",
   },
 
-  test: {
+  quiz: {
     introduction: [
       "Вам предлагается 20 утверждений, которые нужно оценить применительно к себе.",
       "Не думайте слишком долго над каждым утверждением.",

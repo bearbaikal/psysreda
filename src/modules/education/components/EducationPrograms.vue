@@ -18,7 +18,7 @@
 import { educationPrograms } from "@/modules/education/settings/educationHistory";
 </script>
 <style lang="scss" scoped>
-@import "@/scss/variables.scss";
+@import "@/scss/variables";
 
 .education-programs {
   &__type {

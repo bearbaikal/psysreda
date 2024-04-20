@@ -1,14 +1,14 @@
 <template>
   <div class="result-component">
     <div class="result-component__title">
-      {{ lang.test.yourResult }}:
+      {{ lang.quiz.yourResult }}:
       <div class="result-component__result">{{ result }}</div>
     </div>
     <div class="result-component__result-stands-for">
-      {{ lang.test.resultStandsForTitle }}
+      {{ lang.quiz.resultStandsForTitle }}
     </div>
     <div class="result-component__text">
-      <TextParser :lines="lang.test.resultStandsFor" end-line-text="<br/><br/>" />
+      <TextParser :lines="lang.quiz.resultStandsFor" end-line-text="<br/><br/>" />
     </div>
   </div>
 </template>

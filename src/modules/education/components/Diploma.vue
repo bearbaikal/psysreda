@@ -18,7 +18,7 @@
 </template>
 <script lang="ts" setup></script>
 <style lang="scss" scoped>
-@import "@/scss/variables.scss";
+@import "@/scss/variables";
 
 .diploma {
   font-size: 1.125rem;

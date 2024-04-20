@@ -59,8 +59,8 @@ import BaseDialog from "@/components/base/dialogs/BaseDialog.vue";
 import BaseCard from "@/components/BaseCard.vue";
 import Layout1 from "@/components/Layout1.vue";
 import TextLink from "@/components/links/TextLink.vue";
-import Diploma from "@/modules/education/components/contentBlocks/Diploma.vue";
-import EducationPrograms from "@/modules/education/components/contentBlocks/EducationPrograms.vue";
+import Diploma from "@/modules/education/components/Diploma.vue";
+import EducationPrograms from "@/modules/education/components/EducationPrograms.vue";
 import { lang } from "@/settings/lang";
 
 interface EducationDialog {

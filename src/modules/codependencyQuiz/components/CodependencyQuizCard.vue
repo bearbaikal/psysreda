@@ -5,7 +5,7 @@
       с созависимостью?
     </template>
     <template #body>
-      <div class="codependency-test-card__body">
+      <div class="codependency-quiz-card__body">
         <div>
           Этот <b>легкий</b> бесплатный <b>тест</b><br />
           поможет тебе определить<br />
@@ -14,29 +14,29 @@
         <BaseButton
           :text="testResult ? lang.button.passAgain : lang.button.passTest"
           :color-scheme="testResult ? 'lightGrey' : 'red'"
-          class="codependency-test-card__button"
+          class="codependency-quiz-card__button"
           @click="openTestDialog"
         />
       </div>
     </template>
   </BaseCard>
-  <CodependencyTestDialog ref="testDialogRef" @click:close="handleCloseTestDialog" @test:finish="handleFinishTest" />
+  <CodependencyQuizDialog ref="testDialogRef" @click:close="handleCloseTestDialog" @test:finish="handleFinishTest" />
 </template>
 <script lang="ts" setup>
 import { onBeforeMount, ref } from "vue";
 
 import BaseButton from "@/components/base/buttons/BaseButton.vue";
 import BaseCard from "@/components/BaseCard.vue";
-import CodependencyTestDialog from "@/components/dialogs/TestDialog.vue";
+import CodependencyQuizDialog from "@/modules/codependencyQuiz/components/CodependencyQuizDialog.vue";
 import { lang } from "@/settings/lang";
 import { LocalStorageKeys } from "@/settings/localStorage";
 
-const testDialogRef = ref<InstanceType<typeof CodependencyTestDialog> | undefined>();
+const testDialogRef = ref<InstanceType<typeof CodependencyQuizDialog> | undefined>();
 const testResult = ref<number | undefined>(undefined);
 
 onBeforeMount(() => {
-  if (localStorage.getItem(LocalStorageKeys.CodependencyTest)) {
-    testResult.value = Number(localStorage.getItem(LocalStorageKeys.CodependencyTest));
+  if (localStorage.getItem(LocalStorageKeys.CodependencyQuiz)) {
+    testResult.value = Number(localStorage.getItem(LocalStorageKeys.CodependencyQuiz));
   }
 });
 
@@ -61,9 +61,9 @@ const handleFinishTest = async (result: number | null) => {
 };
 </script>
 <style lang="scss" scoped>
-@import "@/scss/variables.scss";
+@import "@/scss/variables";
 
-.codependency-test-card {
+.codependency-quiz-card {
   &__body {
     display: flex;
     justify-content: center;

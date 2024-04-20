@@ -5,7 +5,7 @@
       {{ question }}
     </div>
     <div class="question-component__answers">
-      <div v-for="(answer, index) in lang.test.answers" class="question-component__item" :key="index">
+      <div v-for="(answer, index) in lang.quiz.answers" class="question-component__item" :key="index">
         <RadioButton v-model="answerNumber" :inputId="`answer${index + 1}`" name="answer" :value="index + 1" />
         <label :for="`answer${index + 1}`">{{ answer }}</label>
       </div>

@@ -1,19 +1,16 @@
 <template>
   <BaseDialog ref="baseDialogRef" @click:close="emit('click:close', result || resultFromLocalStorage)">
-    <template #header> {{ lang.title.codependencyTest }}</template>
+    <template #header> {{ lang.title.codependencyQuiz }}</template>
     <template #body>
       <div class="test-dialog__body">
-        <ResultComponent
-          v-if="isShowResult || resultFromLocalStorage"
-          :result="result || Number(resultFromLocalStorage)"
-        />
+        <QuizResult v-if="isShowResult || resultFromLocalStorage" :result="result || Number(resultFromLocalStorage)" />
         <template v-else>
-          <TextParser v-if="!questionNumber" :lines="lang.test.introduction" />
-          <QuestionComponent
+          <TextParser v-if="!questionNumber" :lines="lang.quiz.introduction" />
+          <QuizQuestion
             v-else
             v-model="answers[questionNumber]"
-            :question="codependencyTestQuestions[questionNumber - 1]"
-            :info="`${questionNumber}/${codependencyTestQuestions.length}`"
+            :question="codependencyQuiz[questionNumber - 1]"
+            :info="`${questionNumber}/${codependencyQuiz.length}`"
           />
         </template>
       </div>
@@ -40,12 +37,12 @@ import { computed, ref } from "vue";
 
 import BaseButton from "@/components/base/buttons/BaseButton.vue";
 import BaseDialog from "@/components/base/dialogs/BaseDialog.vue";
-import QuestionComponent from "@/components/test/TestQuestionComponent.vue";
-import ResultComponent from "@/components/test/TestResultComponent.vue";
 import TextParser from "@/components/TextParser.vue";
+import QuizQuestion from "@/modules/codependencyQuiz/components/QuizQuestion.vue";
+import QuizResult from "@/modules/codependencyQuiz/components/QuizResult.vue";
+import { codependencyQuiz } from "@/settings/codependencyQuiz";
 import { lang } from "@/settings/lang";
 import { LocalStorageKeys } from "@/settings/localStorage";
-import { codependencyTestQuestions } from "@/settings/tests/codependencyTest/codependencyTestQuestions";
 
 const emit = defineEmits(["click:close", "test:finish"]);
 
@@ -57,7 +54,7 @@ const answers = ref<Record<number, number>>({});
 const isShowResult = ref<boolean>(false);
 
 const isLastQuestion = computed<boolean>(() => {
-  return questionNumber.value === codependencyTestQuestions.length;
+  return questionNumber.value === codependencyQuiz.length;
 });
 
 const actionButtonText = computed<string>(() => {
@@ -91,7 +88,7 @@ const isActionButtonDisabled = computed<boolean>(() => {
 const handleClickActionButton = () => {
   if (resultFromLocalStorage.value) {
     resultFromLocalStorage.value = undefined;
-    localStorage.removeItem(LocalStorageKeys.CodependencyTest);
+    localStorage.removeItem(LocalStorageKeys.CodependencyQuiz);
   }
 
   if (isShowResult.value) {
@@ -101,7 +98,7 @@ const handleClickActionButton = () => {
   }
 
   if (isLastQuestion.value) {
-    localStorage.setItem(LocalStorageKeys.CodependencyTest, result.value.toString());
+    localStorage.setItem(LocalStorageKeys.CodependencyQuiz, result.value.toString());
 
     isShowResult.value = true;
 
@@ -119,8 +116,8 @@ defineExpose({
     answers.value = {};
     isShowResult.value = false;
     baseDialogRef.value?.open();
-    if (localStorage.getItem(LocalStorageKeys.CodependencyTest)) {
-      resultFromLocalStorage.value = Number(localStorage.getItem(LocalStorageKeys.CodependencyTest));
+    if (localStorage.getItem(LocalStorageKeys.CodependencyQuiz)) {
+      resultFromLocalStorage.value = Number(localStorage.getItem(LocalStorageKeys.CodependencyQuiz));
     }
   },
   close: () => {
@@ -129,7 +126,7 @@ defineExpose({
 });
 </script>
 <style lang="scss" scoped>
-@import "@/scss/variables.scss";
+@import "@/scss/variables";
 
 .test-dialog {
   &__body {

@@ -1,3 +1,7 @@
+class Notify {
+  // TODO
+}
+
 // export const notifySiteOwner = async (message: string) => {
 //   await apiRequest({
 //     path: apiRoutes.telegramProcessor,
