@@ -1,3 +1,3 @@
 export const apiRoutes = {
-  telegramProcessor: "/telegramProcessor",
+  notify: "/notify",
 };

@@ -9,5 +9,15 @@ export enum AxiosMethod {
 export interface ApiRequestConfig {
   method: AxiosMethod;
   path: string;
-  data: never;
+  body: Record<string, unknown>;
+}
+
+export enum NotifyRecipientRole {
+  SiteOwner = "site_owner",
+  SiteAdmin = "site_admin",
+}
+
+export enum NotifyType {
+  MessageFromVisitor = "message_from_visitor",
+  QuizResult = "quiz_result",
 }

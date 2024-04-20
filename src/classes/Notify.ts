@@ -1,13 +1,16 @@
-class Notify {
-  // TODO
-}
+import { apiRequest } from "@/api/apiRequest";
+import { apiRoutes } from "@/settings/apiRoutes";
+import { AxiosMethod, NotifyRecipientRole, NotifyType } from "@/types/api";
 
-// export const notifySiteOwner = async (message: string) => {
-//   await apiRequest({
-//     path: apiRoutes.telegramProcessor,
-//     data: {
-//       text: message,
-//       mode: isTestEnvironment() ? "test" : "prod",
-//     },
-//   });
-// };
+export class Notify {
+  static async now(recipientRole: NotifyRecipientRole, notifyType: NotifyType, body: string) {
+    await apiRequest({
+      method: AxiosMethod.Post,
+      path: apiRoutes.notify,
+      body: {
+        recipientRole,
+        body,
+      },
+    });
+  }
+}

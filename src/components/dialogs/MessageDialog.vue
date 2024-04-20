@@ -34,9 +34,11 @@ import InputText from "primevue/inputtext";
 import Textarea from "primevue/textarea";
 import { computed, reactive, ref } from "vue";
 
+import { Notify } from "@/classes/Notify";
 import BaseButton from "@/components/base/BaseButton.vue";
 import BaseDialog from "@/components/base/BaseDialog.vue";
 import { lang } from "@/settings/lang";
+import { NotifyRecipientRole, NotifyType } from "@/types/api";
 
 const MIN_NAME_LENGTH = 2;
 const MIN_PHONE_LENGTH = 9; // For local Spain number.
@@ -67,8 +69,9 @@ const validation = reactive({
 const isFormValid = computed<boolean>(() => {
   return validation.phone() && validation.name() && validation.message();
 });
-const handleClickWriteMe = () => {
+const handleClickWriteMe = async () => {
   console.log("on click");
+  // TODO
   // this.$refs.form.validate()
   // if (!this.valid) {
   //   return
@@ -79,8 +82,9 @@ const handleClickWriteMe = () => {
   // text += 'Имя:\n' + this.formData.name
   // text += '\nТелефон:\n' + this.formData.phone
   // text += '\nСпособ связи:\n' + this.formData.connector
-  // await notifySiteOwner(text)
-  // this.status = 'data_sent'
+
+  const body = "prepared message from site visitor";
+  await Notify.now(NotifyRecipientRole.SiteOwner, NotifyType.MessageFromVisitor, body);
 };
 
 defineExpose({
