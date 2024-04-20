@@ -25,7 +25,7 @@
 <script lang="ts" setup>
 import { onBeforeMount, ref } from "vue";
 
-import BaseButton from "@/components/base/buttons/BaseButton.vue";
+import BaseButton from "@/components/base/BaseButton.vue";
 import BaseCard from "@/components/BaseCard.vue";
 import CodependencyQuizDialog from "@/modules/codependencyQuiz/components/CodependencyQuizDialog.vue";
 import { lang } from "@/settings/lang";

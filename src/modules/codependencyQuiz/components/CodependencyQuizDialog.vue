@@ -35,8 +35,8 @@
 <script lang="ts" setup>
 import { computed, ref } from "vue";
 
-import BaseButton from "@/components/base/buttons/BaseButton.vue";
-import BaseDialog from "@/components/base/dialogs/BaseDialog.vue";
+import BaseButton from "@/components/base/BaseButton.vue";
+import BaseDialog from "@/components/base/BaseDialog.vue";
 import TextParser from "@/components/TextParser.vue";
 import QuizQuestion from "@/modules/codependencyQuiz/components/QuizQuestion.vue";
 import QuizResult from "@/modules/codependencyQuiz/components/QuizResult.vue";

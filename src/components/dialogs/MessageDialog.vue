@@ -34,8 +34,8 @@ import InputText from "primevue/inputtext";
 import Textarea from "primevue/textarea";
 import { computed, reactive, ref } from "vue";
 
-import BaseButton from "@/components/base/buttons/BaseButton.vue";
-import BaseDialog from "@/components/base/dialogs/BaseDialog.vue";
+import BaseButton from "@/components/base/BaseButton.vue";
+import BaseDialog from "@/components/base/BaseDialog.vue";
 import { lang } from "@/settings/lang";
 
 const MIN_NAME_LENGTH = 2;

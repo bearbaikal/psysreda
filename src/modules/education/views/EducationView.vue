@@ -54,8 +54,8 @@
 import { ref } from "vue";
 import type { Component, Ref } from "vue";
 
-import BaseButton from "@/components/base/buttons/BaseButton.vue";
-import BaseDialog from "@/components/base/dialogs/BaseDialog.vue";
+import BaseButton from "@/components/base/BaseButton.vue";
+import BaseDialog from "@/components/base/BaseDialog.vue";
 import BaseCard from "@/components/BaseCard.vue";
 import Layout1 from "@/components/Layout1.vue";
 import TextLink from "@/components/links/TextLink.vue";
