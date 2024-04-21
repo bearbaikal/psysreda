@@ -30,6 +30,7 @@
   </BaseDialog>
 </template>
 <script lang="ts" setup>
+import { format } from "date-fns";
 import InputText from "primevue/inputtext";
 import Textarea from "primevue/textarea";
 import { computed, reactive, ref } from "vue";
@@ -70,21 +71,16 @@ const isFormValid = computed<boolean>(() => {
   return validation.phone() && validation.name() && validation.message();
 });
 const handleClickWriteMe = async () => {
-  console.log("on click");
-  // TODO
-  // this.$refs.form.validate()
-  // if (!this.valid) {
-  //   return
-  // }
-  // let text = 'Тип запроса:\n'
-  // text += `${this.type}\n`
-  // text += 'Дата и время запроса:\n' + format(new Date(), DATE_TIME_FORMAT) + '\n'
-  // text += 'Имя:\n' + this.formData.name
-  // text += '\nТелефон:\n' + this.formData.phone
-  // text += '\nСпособ связи:\n' + this.formData.connector
+  let message: string = "";
+  message += "---------------------------------------------------------------";
+  message += '\n<b>Запрос с сайта psysreda.ru через форму "Написать мне":</b>';
+  message += "\n---------------------------------------------------------------";
+  message += "\n\nИмя:\n" + form.name;
+  message += "\n\nТелефон:\n" + form.phone;
+  message += "\n\nСообщение:\n" + form.message;
+  message += "\n\nДата, время:\n" + format(new Date(), "yyyy-MM-dd HH:mm") + "\n";
 
-  const body = "prepared message from site visitor";
-  await Notify.now(NotifyRecipientRole.SiteOwner, NotifyType.MessageFromVisitor, body);
+  await Notify.now(NotifyRecipientRole.SiteOwner, NotifyType.MessageFromVisitor, message);
 };
 
 defineExpose({

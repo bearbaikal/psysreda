@@ -8,11 +8,11 @@ export const apiRequest = async (config: ApiRequestConfig) => {
   const url = `${import.meta.env.VITE_APP_API_HOST}${import.meta.env.VITE_APP_API_PATH}${config.path}`;
 
   const data = config.body || {};
-  let headers = {};
+  const headers: Record<string, string> = {};
   const bearerToken = localStorage.getItem(LocalStorageKeys.AuthToken);
 
   if (bearerToken) {
-    headers = { Authorization: `Bearer ${bearerToken}` };
+    headers.Authorization = `Bearer ${bearerToken}`;
   }
 
   let configAxios;
