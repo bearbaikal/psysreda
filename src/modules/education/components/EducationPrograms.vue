@@ -6,8 +6,8 @@
       <div class="education-programs__title">{{ item.title }}</div>
       <div class="education-programs__dot">*</div>
       <div class="education-programs__period">{{ item.period }}</div>
-      <div class="education-programs__dot">*</div>
-      <div class="education-programs__location">{{ item.location }}</div>
+      <div class="education-programs__dot" v-if="item.location">*</div>
+      <div class="education-programs__location" v-if="item.location">{{ item.location }}</div>
       <div v-if="index < educationPrograms.length - 1" class="education-programs__line">
         * * * * * * * * * * * * * *
       </div>

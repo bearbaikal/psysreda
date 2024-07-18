@@ -17,6 +17,11 @@ export const lang = {
     passAgain: "Пройти Заново",
   },
 
+  message: {
+    thanksThatWrote: "Спасибо, что написали мне. Я свяжусь в Вами в ближайшее время.",
+    errorSendMessage: "К сожалению, возникла ошибка при отправке сообщения.",
+  },
+
   textLink: {
     knowMore: "Узнать подробнее",
   },
@@ -26,12 +31,14 @@ export const lang = {
     codependencyQuiz: "Тест на созависимость",
     education: "Образование",
     educationalPrograms: "Образовательные программы",
+    yourMessageSent: "Ваше сообщение отправлено",
+    errorSendMessage: "Ошибка отправки сообщения",
   },
 
   placeholder: {
     yoursName: "Ваше имя",
     yoursPhone: "Ваш телефон",
-    messageToMe: "Сообщение мне",
+    messageToMe: "Чтобы вы хотели сказать...",
   },
 
   quiz: {

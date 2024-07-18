@@ -1,7 +1,7 @@
 <template>
   <Teleport v-if="showDialog" to="body">
     <div class="base-dialog">
-      <div class="base-dialog__container">
+      <div class="base-dialog__container" :style="{ minHeight }">
         <div class="base-dialog__close pi pi-times" v-if="closeIcon" @click="emit('click:close')" />
         <div class="base-dialog__header">
           <slot name="header" />
@@ -23,6 +23,9 @@ const emit = defineEmits(["click:close"]);
 
 defineProps({
   closeIcon: Boolean,
+  minHeight: {
+    type: String,
+  },
 });
 
 const showDialog = ref<boolean>(false);
@@ -55,7 +58,6 @@ defineExpose({
   &__container {
     position: relative;
     width: 400px;
-    min-height: 400px;
     text-align: center;
     padding: 30px 40px 30px;
     border: 1px solid #999;
@@ -78,6 +80,7 @@ defineExpose({
 
   &__body {
     margin-top: 30px;
+    font-size: 1.25rem;
   }
 
   &__buttons {

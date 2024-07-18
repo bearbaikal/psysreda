@@ -1,5 +1,5 @@
 <template>
-  <BaseDialog ref="baseDialogRef" @click:close="emit('click:close')">
+  <BaseDialog ref="baseDialogRef" @click:close="close">
     <template #header>
       {{ lang.title.messageMe }}
     </template>
@@ -24,7 +24,29 @@
           color-scheme="red"
           @click="handleClickWriteMe"
         />
-        <BaseButton :text="lang.button.close" color-scheme="whiteAndBlack" @click="emit('click:close')" />
+        <BaseButton :text="lang.button.close" color-scheme="whiteAndBlack" @click="close" />
+      </div>
+    </template>
+  </BaseDialog>
+  <BaseDialog ref="successDialogRef">
+    <template #header>
+      {{ lang.title.yourMessageSent }}
+    </template>
+    <template #body> {{ lang.message.thanksThatWrote }} </template>
+    <template #buttons>
+      <div style="margin-top: 20px">
+        <BaseButton :text="lang.button.close" color-scheme="whiteAndBlack" @click="closeSuccessDialog" />
+      </div>
+    </template>
+  </BaseDialog>
+  <BaseDialog ref="errorDialogRef">
+    <template #header>
+      {{ lang.title.errorSendMessage }}
+    </template>
+    <template #body> {{ lang.message.errorSendMessage }} </template>
+    <template #buttons>
+      <div style="margin-top: 20px">
+        <BaseButton :text="lang.button.close" color-scheme="whiteAndBlack" @click="closeErrorDialog" />
       </div>
     </template>
   </BaseDialog>
@@ -45,15 +67,17 @@ const MIN_NAME_LENGTH = 2;
 const MIN_PHONE_LENGTH = 9; // For local Spain number.
 const MIN_MESSAGE_LENGTH = 10;
 
-const emit = defineEmits(["click:close"]);
-
-const baseDialogRef = ref<InstanceType<typeof BaseDialog>>();
-
-const form = reactive({
+const formInitialValue = () => ({
   name: "",
   phone: "",
   message: "",
 });
+
+const baseDialogRef = ref<InstanceType<typeof BaseDialog>>();
+const successDialogRef = ref<InstanceType<typeof BaseDialog>>();
+const errorDialogRef = ref<InstanceType<typeof BaseDialog>>();
+
+const form = reactive(formInitialValue());
 
 const validation = reactive({
   name: (): boolean => {
@@ -80,16 +104,39 @@ const handleClickWriteMe = async () => {
   message += "\n\nСообщение:\n" + form.message;
   message += "\n\nДата, время:\n" + format(new Date(), "yyyy-MM-dd HH:mm") + "\n";
 
-  await Notify.now(NotifyRecipientRole.SiteOwner, NotifyType.MessageFromVisitor, message);
+  try {
+    const { success } = await Notify.now(NotifyRecipientRole.SiteOwner, NotifyType.MessageFromVisitor, message);
+    if (success) {
+      await successDialogRef.value?.open();
+    } else {
+      await errorDialogRef.value?.open();
+    }
+  } catch (e) {
+    await errorDialogRef.value?.open();
+  } finally {
+    close();
+    Object.assign(form, formInitialValue());
+  }
+};
+
+const open = () => {
+  baseDialogRef.value?.open();
+};
+
+const close = () => {
+  baseDialogRef.value?.close();
+};
+
+const closeSuccessDialog = () => {
+  successDialogRef.value?.close();
+};
+
+const closeErrorDialog = () => {
+  errorDialogRef.value?.close();
 };
 
 defineExpose({
-  open: () => {
-    baseDialogRef.value?.open();
-  },
-  close: () => {
-    baseDialogRef.value?.close();
-  },
+  open,
 });
 </script>
 <style lang="scss" scoped>

@@ -42,5 +42,6 @@ export const apiRequest = async (config: ApiRequestConfig) => {
     // TODO Need to add right toast call from here
     // this.toastError(Lang.UNKNOWN_ERROR);
   }
+
   return res?.data;
 };

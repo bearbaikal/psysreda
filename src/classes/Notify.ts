@@ -3,8 +3,12 @@ import { apiRoutes } from "@/settings/apiRoutes";
 import { AxiosMethod, NotifyRecipientRole, NotifyType } from "@/types/api";
 
 export class Notify {
-  static async now(recipientRole: NotifyRecipientRole, notifyType: NotifyType, message: string) {
-    await apiRequest({
+  static async now(
+    recipientRole: NotifyRecipientRole,
+    notifyType: NotifyType,
+    message: string
+  ): Promise<{ success: boolean }> {
+    return await apiRequest({
       method: AxiosMethod.Post,
       path: apiRoutes.notify,
       body: {

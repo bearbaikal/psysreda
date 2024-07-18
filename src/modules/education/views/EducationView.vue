@@ -6,7 +6,7 @@
           <template #section1> Программы профессиональной подготовки</template>
           <template #section2> с 2005 года - сегодня </template>
           <template #section3>
-            <div style="margin-top: 40px; margin-bottom: 40px">Я прошла более 20 образовательных программ</div>
+            <div style="margin-top: 30px" />
           </template>
           <template #section4>
             <TextLink :text="lang.textLink.knowMore" @click="handleClickKnowMore('educationPrograms')" />

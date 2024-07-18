@@ -15,7 +15,7 @@
             <span class="welcome-card__question-marks">!</span>
           </div>
           <div class="welcome-card__answer">
-            Если тебе отзывается эта фраза,<br />
+            Если Вам отзывается эта фраза,<br />
             то значит ты <b>готов к изменениям</b> <br />и мы сможем начать совместную работу
           </div>
         </div>
@@ -23,7 +23,7 @@
       </div>
     </template>
   </BaseCard>
-  <MessageDialog ref="messageDialogRef" @click:close="onClickCloseMessageDialog" />
+  <MessageDialog ref="messageDialogRef" />
 </template>
 
 <script lang="ts" setup>
@@ -38,10 +38,6 @@ const messageDialogRef = ref<InstanceType<typeof MessageDialog> | undefined>();
 
 const openMessageDialog = () => {
   messageDialogRef.value?.open();
-};
-
-const onClickCloseMessageDialog = () => {
-  messageDialogRef.value?.close();
 };
 </script>
 
