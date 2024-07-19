@@ -15,7 +15,7 @@
             <span class="welcome-card__question-marks">!</span>
           </div>
           <div class="welcome-card__answer">
-            Если Вам отзывается эта фраза,<br />
+            Если тебе отзывается эта фраза,<br />
             то значит ты <b>готов к изменениям</b> <br />и мы сможем начать совместную работу
           </div>
         </div>
