@@ -105,7 +105,7 @@ const handleClickWriteMe = async () => {
   message += "\n\nДата, время:\n" + format(new Date(), "yyyy-MM-dd HH:mm") + "\n";
 
   try {
-    const { success } = await Notify.now(NotifyRecipientRole.SiteOwner, NotifyType.MessageFromVisitor, message);
+    const { success } = await Notify.now(NotifyType.MessageFromVisitor, message);
     if (success) {
       await successDialogRef.value?.open();
     } else {
