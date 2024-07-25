@@ -23,6 +23,7 @@
   <CodependencyQuizDialog ref="testDialogRef" @click:close="handleCloseTestDialog" @test:finish="handleFinishTest" />
 </template>
 <script lang="ts" setup>
+import { format } from "date-fns";
 import { onBeforeMount, ref } from "vue";
 
 import { Notify } from "@/classes/Notify";
@@ -31,7 +32,7 @@ import BaseCard from "@/components/BaseCard.vue";
 import CodependencyQuizDialog from "@/modules/codependencyQuiz/components/CodependencyQuizDialog.vue";
 import { lang } from "@/settings/lang";
 import { LocalStorageKeys } from "@/settings/localStorage";
-import { NotifyRecipientRole, NotifyType } from "@/types/api";
+import { NotifyType } from "@/types/api";
 
 const testDialogRef = ref<InstanceType<typeof CodependencyQuizDialog> | undefined>();
 const testResult = ref<number | undefined>(undefined);
@@ -56,13 +57,11 @@ const handleFinishTest = async (result: number | null) => {
   testDialogRef.value?.close();
 
   // TODO Finish notification logic.
-  //   let text = 'Кто-то заполнил тест на сайте!\n'
-  //   text += 'Дата и время заполнения:\n' + format(new Date(), DATE_TIME_FORMAT) + '\n'
-  //   text += 'Сумма теста:\n' + total.value
-  //   await notifySiteOwner(text)
+  let text = "Кто-то заполнил тест на сайте!\n";
+  text += "Дата и время заполнения:\n" + format(new Date(), "yyyy-MM-dd HH:mm") + "\n";
+  text += "Сумма теста:\n" + testResult.value;
 
-  const body = "prepared test result";
-  await Notify.now(NotifyRecipientRole.SiteOwner, NotifyType.QuizResult, body);
+  await Notify.now(NotifyType.QuizResult, text);
 };
 </script>
 <style lang="scss" scoped>
