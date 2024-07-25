@@ -21,6 +21,13 @@ jobs:
       - name: Install packages
         run: npm ci
 
+      - name: Create env file
+        run: |
+          touch .env
+          echo VITE_API_URL="http://stable-api.self-platform.es:3040" >> .env
+          echo VITE_CLOUDFLARE_TURNSTILE_SITE_KEY=${{ secrets.TURNSTILE_SITE_KEY }} >> .env
+          cat .env
+
       - name: Build
         run: npm run build
 
