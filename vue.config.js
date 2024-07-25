@@ -6,7 +6,7 @@ module.exports = defineConfig({
   },
   chainWebpack: (config) => {
     config.plugin("html").tap((args) => {
-      args[0].title = "Татьяна Гвоздовская - психотерапевт";
+      args[0].title = "Татьяна Гвоздовская - гештальт-психотерапевт";
       return args;
     });
   },

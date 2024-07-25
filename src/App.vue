@@ -1,70 +1,35 @@
 <template>
-  <v-app>
-    <v-container>
-      <v-tabs v-model="menu" centered show-arrows>
-        <v-tab v-for="tab in preparedTabs" :key="tab.path" :to="tab.path"
-          >{{ tab.label }}
-        </v-tab>
-      </v-tabs>
-      <v-main>
-        <router-view />
-      </v-main>
-
-      <v-footer fixed padless>
-        <v-btn
-          v-for="social in socialNetworks"
-          :key="social.link"
-          :href="social.link"
-          target="_blank"
-          icon
-        >
-          <v-icon :color="social.color" size="24px">{{ social.icon }}</v-icon>
-        </v-btn>
-      </v-footer>
-    </v-container>
-  </v-app>
+  <div class="app">
+    <div class="app__tabs-bar-container">
+      <TabsBar />
+    </div>
+    <div>
+      <router-view />
+    </div>
+  </div>
 </template>
 
-<script>
-import { appTabs, socialNetworks } from "@/settings";
-
-export default {
-  name: "App",
-
-  data() {
-    return {
-      menu: "",
-      appTabs,
-      socialNetworks,
-    };
-  },
-
-  computed: {
-    preparedTabs() {
-      return appTabs.filter((el) => !el.disabled);
-    },
-  },
-};
+<script lang="ts" setup>
+import TabsBar from "@/components/tabs/TabsBar.vue";
 </script>
 <style lang="scss" scoped>
-@import "@/assets/scss/variables.scss";
+@import "@/scss/variables.scss";
+
+.app {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding-bottom: $px-40;
+
+  &__tabs-bar-container {
+    display: flex;
+    justify-content: center;
+    padding-right: $px-20;
+    padding-left: $px-20;
+  }
+}
 
 .container {
   max-width: $container-max-width;
-}
-
-.v-tabs {
-  margin-bottom: $space-after-tabs;
-}
-
-.v-footer {
-  display: flex;
-  justify-content: center;
-  height: $footer-height;
-  border-top: $footer-border-style !important;
-}
-
-::v-deep .v-main {
-  padding-bottom: $space-after-blocks !important;
 }
 </style>
