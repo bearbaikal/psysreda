@@ -25,6 +25,7 @@ jobs:
         run: |
           touch .env
           echo VITE_APP_API_HOST="http://stable-api.self-platform.es:3040" >> .env
+          echo VITE_APP_API_PATH="" >> .env
           cat .env
 
       - name: Build
