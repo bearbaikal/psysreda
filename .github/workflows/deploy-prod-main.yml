@@ -26,6 +26,7 @@ jobs:
           touch .env
           echo VITE_APP_API_HOST="http://stable-api.self-platform.es:3040" >> .env
           echo VITE_APP_API_PATH="" >> .env
+          echo VITE_APP_PUBLIC_NOTIFICATION_TOKEN="98d61e1c-c902-4c99-bd57-528070cd5061"
           cat .env
 
       - name: Build
