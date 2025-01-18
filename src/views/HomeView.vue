@@ -6,7 +6,6 @@
   </div>
 </template>
 <script lang="ts" setup>
-// TODO
 import WelcomeCard from "@/components/cards/WelcomeCard.vue";
 </script>
 <style lang="scss" scoped>

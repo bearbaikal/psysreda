@@ -37,7 +37,7 @@ import { lang } from "@/settings/lang";
 const messageDialogRef = ref<InstanceType<typeof MessageDialog> | undefined>();
 
 const openMessageDialog = () => {
-  messageDialogRef.value?.open();
+  window.open("https://taplink.cc/mypsyholog", "_blank");
 };
 </script>
 
