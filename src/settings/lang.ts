@@ -6,7 +6,7 @@ export const lang = {
   buttonEnrollArtTherapyGroupApprove: "Записаться",
 
   button: {
-    writeMe: "Написать мне",
+    writeMe: "Получить поддержку",
     close: "Закрыть",
     startTest: "Начать тест",
     continue: "Далее",

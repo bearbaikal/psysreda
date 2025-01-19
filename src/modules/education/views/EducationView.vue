@@ -4,7 +4,7 @@
       <template #body>
         <Layout1>
           <template #section1> Программы профессиональной подготовки</template>
-          <template #section2> с 2005 года - сегодня </template>
+          <template #section2> с 2005 года - настоящее </template>
           <template #section3>
             <div style="margin-top: 30px" />
           </template>

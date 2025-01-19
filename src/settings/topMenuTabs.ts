@@ -6,14 +6,14 @@ export const topMenuTabs: MenuOption[] = [
     label: "Главная",
     route: appRoutes.home,
   },
-  {
-    label: "Гештальт-подход",
-    route: appRoutes.gestalt,
-  },
-  {
-    label: "Консультации",
-    route: appRoutes.consultations,
-  },
+  // {
+  //   label: "Гештальт-подход",
+  //   route: appRoutes.gestalt,
+  // },
+  // {
+  //   label: "Консультации",
+  //   route: appRoutes.consultations,
+  // },
   {
     label: "Образование",
     route: appRoutes.education,

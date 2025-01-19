@@ -3,20 +3,19 @@
     <template #header>
       <div class="welcome-card__title">
         <div>Татьяна Гвоздовская,</div>
-        <div>гештальт - психотерапевт</div>
+        <div><b>сертифицированный</b><br />гештальт - психотерапевт</div>
       </div>
       <img src="@/images/logo3.jpg" alt="Tatiana Gvozdovskaia" class="welcome-card__photo" />
     </template>
     <template #body>
       <div class="welcome-card__body">
         <div class="welcome-card__body-text">
+          <div class="welcome-card__answer">
+            Я работаю с клиентами более 15 лет и считаю, что в первую очередь нужно...
+          </div>
           <div class="welcome-card__question">
             <span class="welcome-card__question-text">Научиться заботиться о себе</span>
             <span class="welcome-card__question-marks">!</span>
-          </div>
-          <div class="welcome-card__answer">
-            Если тебе отзывается эта фраза,<br />
-            то значит ты <b>готов к изменениям</b> <br />и мы сможем начать совместную работу
           </div>
         </div>
         <BaseButton :text="lang.button.writeMe" color-scheme="red" @click="openMessageDialog" />
@@ -63,11 +62,12 @@ const openMessageDialog = () => {
   }
 
   &__answer {
-    line-height: 1.25em;
+    font-size: 1.25rem;
+    padding-bottom: 10px;
   }
 
   &__question-text {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
 
   &__question-marks {
@@ -76,7 +76,7 @@ const openMessageDialog = () => {
   }
 
   &__photo {
-    height: 450px;
+    height: 380px;
     border-radius: 15px;
   }
 
@@ -87,7 +87,7 @@ const openMessageDialog = () => {
   }
 
   &__body-text {
-    margin-bottom: $px-20;
+    //margin-bottom: $px-10;
     text-align: center;
     font-size: 1.125rem;
   }
